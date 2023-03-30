@@ -52,7 +52,7 @@ export const Reviews = memo(() => {
   return (
     <Box>
       <ThemeProvider theme={theme}>
-        <Container component="main" maxWidth="xs" sx={{ marginTop: 20 }}>
+        <Container component="main"  sx={{ marginTop: 20 }}>
           <CssBaseline />
           <Box
             sx={{
@@ -62,7 +62,7 @@ export const Reviews = memo(() => {
               alignItems: 'center',
             }}
           >
-            <Typography component="h1" variant="h4">
+            <Typography component="h1" variant="h3" sx={{paddingBottom:'40px'}}>
               Добавить отзыв о курсе
             </Typography>
             <Box
@@ -100,7 +100,7 @@ export const Reviews = memo(() => {
                   alignItems: 'center',
                 }}
               >
-                <Typography>Установите рейтинг курса:</Typography>
+                <Typography sx={{}}>Установите рейтинг курса:</Typography>
                 <Rating
                   name="hover-feedback"
                   value={value}

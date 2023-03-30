@@ -18,7 +18,7 @@ export const App = memo(() => {
     <div className="App">
       <CssBaseline/>
     <Header/>
-     <Box sx={{marginTop: 20}}>
+     <Box sx={{marginTop:'82px'}}>
       <Outlet/>
      </Box>
     </div>

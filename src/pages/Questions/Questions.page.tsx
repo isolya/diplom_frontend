@@ -44,8 +44,8 @@ export const Questions = memo(() => {
                             alignItems: 'center',
                         }}
                     >
-                        <Typography component="h1" variant="h4">
-                            Частозадаваемые вопросы
+                        <Typography component="h1" variant="h3" sx={{paddingBottom:'40px'}}>
+                            Часто задаваемые вопросы
                         </Typography>
 
                         <List

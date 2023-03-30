@@ -16,15 +16,8 @@ import {
     Collapse,
 
 } from '@mui/material';
-
-import Header from '../../components/Header/Header.component';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
-import { lightGreen } from '@mui/material/colors';
-
-
 const theme = createTheme();
-
-
 export const Questions = memo(() => {
     const [open, setOpen] = React.useState(false);
     const [open2, setOpen2] = React.useState(false);
@@ -39,15 +32,10 @@ export const Questions = memo(() => {
     const handleClick3 = () => {
         setOpen3(!open3);
     };
-
-
     return ( 
         <Box>
-            <Header />
             <ThemeProvider theme={theme}>
                 <Container component="main" sx={{ marginTop: 20 }}>
-
-                    <CssBaseline />
                     <Box
                         sx={{
                             marginTop: 8,
@@ -74,7 +62,6 @@ export const Questions = memo(() => {
                                         У нас онлайн-школа с индивидуальными уроками, мы работаем везде, где есть интернет.
                                         Это лучше, чем обычные занятия, потому что:
                                     </ListSubheader>
-
                                 }>
                                     <ListItem sx={{ pl: 4 }}>
                                         <ListItemText primary="- студент не отвлекается на разговоры или игры с другими ребятами" />

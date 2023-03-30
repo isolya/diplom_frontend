@@ -1,26 +1,17 @@
-import { LineStyle, Padding } from '@mui/icons-material';
-import MenuIcon from '@mui/icons-material/Menu'
-import { AppBar, Box, Button, IconButton, Menu, MenuItem, Toolbar, Typography } from '@mui/material';
-import { Container } from '@mui/system';
-import React from 'react';
+import { AppBar, Box, Toolbar, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
-import styles from './Header.module.css';
 const linkStyle = {
   textDecoration: "none",
 };
 const MenuStyle = {
   textDecoration: "none",
-  color:"white",
-  paddingRight:"50px",
-  fontSize:"bold",
-  fontWeight:"bold"
+  color: "white",
+  paddingRight: "50px",
+  fontSize: "bold",
+  fontWeight: "bold"
 }
-
 const Header = () => {
- 
-
   return (
-
     <AppBar position="fixed" sx={{ background: 'black' }}>
       <Toolbar>
         <Link to="/" style={linkStyle}>
@@ -29,7 +20,7 @@ const Header = () => {
             sx={{
               fontSize: "bold",
               padding: "10px",
-              margin:"10px 100px 10px 20px",
+              margin: "10px 100px 10px 20px",
               fontWeight: "bold",
               position: "relative",
               border: "5px solid #E98074",
@@ -40,17 +31,13 @@ const Header = () => {
           </Typography>
         </Link>
         <Box>
-        <Link to="/" style={MenuStyle}>Курсы</Link>
-        <Link to="/reviews" style={MenuStyle}>Отзывы</Link>
-        <Link to="/questions" style={MenuStyle}>Вопросы</Link>
-        <Link to="/ChoosingComputer" style={MenuStyle}> Компьютер для занятий</Link>
-
-     
+          <Link to="/" style={MenuStyle}>Курсы</Link>
+          <Link to="/reviews" style={MenuStyle}>Отзывы</Link>
+          <Link to="/questions" style={MenuStyle}>Вопросы</Link>
+          <Link to="/choosing-computer" style={MenuStyle}> Компьютер для занятий</Link>
         </Box>
       </Toolbar>
     </AppBar>
-
   );
-      };
-
+};
 export default Header;

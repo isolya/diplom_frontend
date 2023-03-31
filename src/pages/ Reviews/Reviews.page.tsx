@@ -3,7 +3,6 @@ import {
   Button,
   CssBaseline,
   TextField,
-  Grid,
   Box,
   Typography,
   Container,
@@ -17,16 +16,15 @@ import {
   SelectChangeEvent,
   Rating,
 } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
 import StarIcon from '@mui/icons-material/Star';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { loginUser } from '../../store/apis/auth';
-import { selectAuthData } from '../../store/slices/auth';
+import { SignInInput } from '../SignIn/SignIn.type';
+import { Controller, useForm } from 'react-hook-form';
+import { ReviewsInput } from './Reviews.type';
+
+
 const theme = createTheme();
+
 export const Reviews = memo(() => {
-  const { userInfo, error } = useAppSelector(selectAuthData);
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const [course, setCourse] = React.useState('');
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -44,11 +42,19 @@ export const Reviews = memo(() => {
   }
   const [value, setValue] = React.useState<number | null>(4);
   const [hover, setHover] = React.useState(-1);
-  useEffect(() => {
-    if (userInfo) {
-      navigate('/');
-    }
-  }, [userInfo]);
+
+  const {
+    control,
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ReviewsInput>();
+
+  const onSubmit = (data: ReviewsInput) => {
+   console.log(data);
+  };
+
+
   return (
     <Box>
       <ThemeProvider theme={theme}>
@@ -67,6 +73,7 @@ export const Reviews = memo(() => {
             </Typography>
             <Box
               component="form"
+              onSubmit={handleSubmit(onSubmit)}
               noValidate
               sx={{ mt: 1 }}
             >
@@ -74,9 +81,16 @@ export const Reviews = memo(() => {
                 <FormControl fullWidth>
                   <InputLabel >Выбрать курс</InputLabel>
                   <Select
+                   {...register('course', {
+                    required: 'Выберите курс',
+                  })}
+                  id="course"
+                  autoFocus
                     value={course}
                     label="Выбрать курс"
                     onChange={handleChange}
+                    error={errors.course ? true : false}
+                  
                   >
                     <MenuItem value={1}>Scratch</MenuItem>
                     <MenuItem value={2}>Roblox</MenuItem>
@@ -87,10 +101,18 @@ export const Reviews = memo(() => {
               </Box>
               <Box >
                 <TextField
+                  {...register('massage', {
+                    required: 'Поле не может быть пустым',
+                  })}
+                  id="massage"
+                  
+                  autoFocus
                   margin="normal"
                   fullWidth
                   placeholder="Пожалуйста введите ваш текст"
                   multiline
+                  error={errors.massage ? true : false}
+                  helperText={errors.massage?.message}
                 />
               </Box>
               <Box
@@ -101,18 +123,25 @@ export const Reviews = memo(() => {
                 }}
               >
                 <Typography sx={{}}>Установите рейтинг курса:</Typography>
+                 <Controller
+        name="rating"
+        control={control}
+        render={({ field }) => 
                 <Rating
-                  name="hover-feedback"
+                {...field} 
+                id="rating"
                   value={value}
                   precision={1}
                   getLabelText={getLabelText}
                   onChange={(event, newValue) => {
                     setValue(newValue);
+                  
                   }}
                   onChangeActive={(event, newHover) => {
                     setHover(newHover);
                   }}
                   emptyIcon={<StarIcon style={{ opacity: 0.55 }} fontSize="inherit" />}
+                />}
                 />
                 {value !== null && (
                   <Box sx={{ ml: 2 }}>{labels[hover !== -1 ? hover : value]}</Box>

@@ -13,23 +13,26 @@ import { SignUpPage } from './pages/SignUp';
 import { store } from './store/store';
 
 const routers = createBrowserRouter([
-  {
-    path:'/questions',
-    element:<Questions />
-  },
-  {
-    path: '/choosingComputer',
-    element: <ChoosingComputer />,
-  },
-  {
-    path: '/reviews',
-    element: <Reviews />,
-
-  },
+  
   {
     path: '/',
     element: <App />,
     errorElement: <Error404Page />,
+    children:[
+      {
+        path:'/questions',
+        element:<Questions />
+      },
+      {
+        path: '/choosing-computer',
+        element: <ChoosingComputer />,
+      },
+      {
+        path: '/reviews',
+        element: <Reviews />,
+    
+      },
+    ]
   },
   {
     path: '/sign-in',

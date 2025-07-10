@@ -104,8 +104,7 @@ export const SignInPage = memo(() => {
               helperText={errors.password?.message}
             />
             <Button
-              type="submit"
-              fullWidth
+              type="submit"   fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
